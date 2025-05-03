@@ -3,7 +3,7 @@ local SoundService = game:GetService("SoundService")
 local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
 
-local soundId = "rbxassetid://83959091660767"
+local soundId = "rbxassetid://113525979424899"
 
 local sound = Instance.new("Sound")
 sound.Name = "c00ls0ngz"
