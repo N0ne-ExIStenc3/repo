@@ -952,22 +952,14 @@ end
 
 local maxstamval = 100
 
-local function maxstam(state)
+local function maxstam()
     local stamscript = require(ReplicatedStorage.Systems.Character.Game.Sprinting)
+    stamscript.MaxStamina = maxstamval
+end
 
-    if connections.stamConnection then
-        connections.stamConnection:Disconnect()
-        connections.stamConnection = nil
-    end
-
-    if not state then
-        stamscript.MaxStamina = maxstamval
-        return
-    end
-
-    connections.stamConnection = RunService.Heartbeat:Connect(function()
-        stamscript.MaxStamina = maxstamval
-    end)
+local function normalstam()
+    local stamscript = require(ReplicatedStorage.Systems.Character.Game.Sprinting)
+    stamscript.Stamina = maxstamval
 end
 
 local function doomskin()
@@ -1163,11 +1155,18 @@ Btab:CreateInput({
    end,
 })
 
-Btab:CreateToggle({
-    Name = "Toggle Max Stamina",
-    CurrentValue = false,
-    Callback = function(state)
-        maxstam(state)
+Btab:CreateButton({
+    Name = "Set Max Stamina",
+    Callback = function()
+        maxstam()
+        Rayfield:Notify{Title = "Note:", Content = "Only works on Swift, Velocity, Delta, Codex and more.", Duration = 5}
+    end
+})
+
+Btab:CreateButton({
+    Name = "Set Stamina",
+    Callback = function()
+        normalstam()
         Rayfield:Notify{Title = "Note:", Content = "Only works on Swift, Velocity, Delta, Codex and more.", Duration = 5}
     end
 })
