@@ -1331,6 +1331,6 @@ Mtab:CreateButton({
 Mtab:CreateButton({
     Name = "Destroy UI",
     Callback = function()
-        GUI:Destroy()
+        Rayfield:Destroy()
     end
 })
