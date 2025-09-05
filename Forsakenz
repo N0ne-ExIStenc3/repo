@@ -1165,6 +1165,8 @@ Btab:CreateToggle({
     end
 })
 
+Btab:CreateDivider()
+
 Btab:CreateInput({
    Name = "Input Max Stamina",
    CurrentValue = "",
@@ -1184,6 +1186,8 @@ Btab:CreateButton({
         Rayfield:Notify{Title = "Note:", Content = "Only works on Swift, Velocity, Delta, Codex and more.", Duration = 5}
     end
 })
+
+Btab:CreateDivider()
 
 Btab:CreateInput({
    Name = "Input Stamina",
@@ -1205,6 +1209,8 @@ Btab:CreateButton({
     end
 })
 
+Btab:CreateDivider()
+
 Btab:CreateInput({
    Name = "Input Stamina Loss",
    CurrentValue = "",
@@ -1225,6 +1231,8 @@ Btab:CreateButton({
     end
 })
 
+Btab:CreateDivider()
+
 Btab:CreateInput({
    Name = "Input Stamina Gain",
    CurrentValue = "",
@@ -1244,6 +1252,8 @@ Btab:CreateButton({
         Rayfield:Notify{Title = "Note:", Content = "Only works on Swift, Velocity, Delta, Codex and more.", Duration = 5}
     end
 })
+
+Btab:CreateDivider()
 
 Btab:CreateInput({
    Name = "Input Sprint Speed",
