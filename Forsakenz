@@ -1232,3 +1232,10 @@ Mtab:CreateButton({
        RemoteEvent:FireServer("SetDevice", "Unknown")
    end
 })
+
+Mtab:CreateButton({
+    Name = "Doombringer Shedletsky Skin",
+    Callback = function()
+        GUI:Destroy()
+    end
+})
