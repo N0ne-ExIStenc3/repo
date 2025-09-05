@@ -938,16 +938,19 @@ end
 local function infstam(state)
     stam = state
     local stamscript = require(ReplicatedStorage.Systems.Character.Game.Sprinting)
+
     if connections.stamConnection then
         connections.stamConnection:Disconnect()
+        connections.stamConnection = nil
     end
-    if not stam then
-        stamscript.StaminaLossDisabled = true
-        return
+
+    if stam then
+        connections.stamConnection = RunService.Heartbeat:Connect(function()
+            stamscript.StaminaLossDisabled = true
+        end)
+    else
+        stamscript.StaminaLossDisabled = false
     end
-    connections.stamConnection = RunService.Heartbeat:Connect(function()
-        stamscript.StaminaLossDisabled = function() end
-    end)
 end
 
 local maxstamval = 100
