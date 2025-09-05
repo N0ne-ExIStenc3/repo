@@ -954,6 +954,10 @@ local function infstam(state)
 end
 
 local maxstamval = 100
+local stamval = 100
+local stamlossval = 20
+local stamgainval = 10
+local speed = 26
 
 local function maxstam()
     local stamscript = require(ReplicatedStorage.Systems.Character.Game.Sprinting)
@@ -962,7 +966,22 @@ end
 
 local function normalstam()
     local stamscript = require(ReplicatedStorage.Systems.Character.Game.Sprinting)
-    stamscript.Stamina = maxstamval
+    stamscript.Stamina = stamval
+end
+
+local function stamloss()
+    local stamscript = require(ReplicatedStorage.Systems.Character.Game.Sprinting)
+    stamscript.StaminaLoss = stamlossval
+end
+
+local function stamgain()
+    local stamscript = require(ReplicatedStorage.Systems.Character.Game.Sprinting)
+    stamscript.StaminaGain = stamgainval
+end
+
+local function sprints()
+    local stamscript = require(ReplicatedStorage.Systems.Character.Game.Sprinting)
+    stamscript.SprintSpeed = speed
 end
 
 local function doomskin()
@@ -1166,6 +1185,18 @@ Btab:CreateButton({
     end
 })
 
+Btab:CreateInput({
+   Name = "Input Stamina",
+   CurrentValue = "",
+   PlaceholderText = "Input Value",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input",
+   Callback = function(Text)
+       stamval = Text
+       Rayfield:Notify{Title = "Notify", Content = "Setted stamina value!", Duration = 5}
+   end,
+})
+
 Btab:CreateButton({
     Name = "Set Stamina",
     Callback = function()
@@ -1173,6 +1204,67 @@ Btab:CreateButton({
         Rayfield:Notify{Title = "Note:", Content = "Only works on Swift, Velocity, Delta, Codex and more.", Duration = 5}
     end
 })
+
+Btab:CreateInput({
+   Name = "Input Stamina Loss",
+   CurrentValue = "",
+   PlaceholderText = "Input Value",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input",
+   Callback = function(Text)
+       stamlossval = Text
+       Rayfield:Notify{Title = "Notify", Content = "Setted stamina value!", Duration = 5}
+   end,
+})
+
+Btab:CreateButton({
+    Name = "Set Stamina Loss",
+    Callback = function()
+        stamloss()
+        Rayfield:Notify{Title = "Note:", Content = "Only works on Swift, Velocity, Delta, Codex and more.", Duration = 5}
+    end
+})
+
+Btab:CreateInput({
+   Name = "Input Stamina Gain",
+   CurrentValue = "",
+   PlaceholderText = "Input Value",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input",
+   Callback = function(Text)
+       stamgainval = Text
+       Rayfield:Notify{Title = "Notify", Content = "Setted stamina value!", Duration = 5}
+   end,
+})
+
+Btab:CreateButton({
+    Name = "Set Stamina Gain",
+    Callback = function()
+        stamgain()
+        Rayfield:Notify{Title = "Note:", Content = "Only works on Swift, Velocity, Delta, Codex and more.", Duration = 5}
+    end
+})
+
+Btab:CreateInput({
+   Name = "Input Sprint Speed",
+   CurrentValue = "",
+   PlaceholderText = "Input Value",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input",
+   Callback = function(Text)
+       speed = Text
+       Rayfield:Notify{Title = "Notify", Content = "Setted stamina value!", Duration = 5}
+   end,
+})
+
+Btab:CreateButton({
+    Name = "Set Sprint Speed",
+    Callback = function()
+        sprints()
+        Rayfield:Notify{Title = "Note:", Content = "Only works on Swift, Velocity, Delta, Codex and more.", Duration = 5}
+    end
+})
+
 
 -- Misc Tab
 Mtab:CreateToggle({
