@@ -1234,7 +1234,7 @@ Mtab:CreateButton({
 })
 
 Mtab:CreateButton({
-    Name = "Doombringer Shedletsky Skin",
+    Name = "Destroy UI",
     Callback = function()
         GUI:Destroy()
     end
